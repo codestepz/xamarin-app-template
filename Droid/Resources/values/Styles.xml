@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8" ?>
+<resources>
+   
+    <!--
+    <style name="Example">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:example">value</item>
+        <item name="android:example">value</item>
+        <item name="android:example">value</item>
+        <item name="android:example">value</item>
+        <item name="android:example">value</item>
+        <item name="android:example">value</item>
+        <item name="android:example">value</item>
+        <item name="android:example">value</item>
+    </style>
+    -->
+    
+    <style name="Presurve.Theme" parent="android:style/Theme.DeviceDefault.NoActionBar">
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:colorPrimary">@android:color/transparent</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+    </style>
+    
+    <style name="Presurve.Theme.ActionBar" parent="Presurve.Theme">
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBarOverlay">true</item>
+        <item name="android:windowTranslucentStatus">true</item>
+        <item name="android:windowTranslucentNavigation">true</item>
+    </style>
+
+    <!-- Background -->
+
+    <style name="Background">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@color/White</item>
+    </style>
+    
+    <style name="BackgroundWallpaper">
+        <item name="android:orientation">vertical</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">@drawable/image_wallpaper</item>
+    </style>
+
+</resources>
