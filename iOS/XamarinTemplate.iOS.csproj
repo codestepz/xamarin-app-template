@@ -81,13 +81,24 @@
     <Reference Include="System.Xml" />
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\netstandard1.3\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Wallpaper.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\Wallpaper.imageset\Image_Wallpaper.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
+    <Folder Include="Screen\" />
+    <Folder Include="Fonts\" />
+    <Folder Include="Assets.xcassets\Wallpaper.imageset\" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="LaunchScreen.storyboard" />
@@ -96,14 +107,30 @@
   <ItemGroup>
     <None Include="Info.plist" />
     <None Include="Entitlements.plist" />
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
-    <Compile Include="ViewController.cs" />
-    <Compile Include="ViewController.designer.cs">
-      <DependentUpon>ViewController.cs</DependentUpon>
+    <Compile Include="Screen\MainScreen.cs" />
+    <Compile Include="Screen\MainScreen.designer.cs">
+      <DependentUpon>MainScreen.cs</DependentUpon>
     </Compile>
+    <Compile Include="Screen\BaseScreen.cs" />
+    <Compile Include="Screen\BaseScreen.designer.cs">
+      <DependentUpon>BaseScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screen\SigninScreen.cs" />
+    <Compile Include="Screen\SigninScreen.designer.cs">
+      <DependentUpon>SigninScreen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Resources\InputBorder.cs" />
+    <Compile Include="Resources\LoadingOverlay.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Fonts\CSChatthai-Regular.ttf" />
+    <BundleResource Include="Fonts\Kanit-Regular.ttf" />
+    <BundleResource Include="Fonts\Prompt-Regular.ttf" />
   </ItemGroup>
   <Import Project="..\XamarinTemplate\XamarinTemplate.projitems" Label="Shared" Condition="Exists('..\XamarinTemplate\XamarinTemplate.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
