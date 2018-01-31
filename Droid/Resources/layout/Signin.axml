@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    style="@style/BackgroundWallpaper">
+    <LinearLayout
+        android:id="@+id/FormLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="20dp"
+        android:paddingRight="20dp"
+        android:paddingBottom="20dp"
+        android:paddingLeft="20dp">
+        <TextView
+            android:id="@+id/TextTitle"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="Signin"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:textColor="@color/White"
+            android:gravity="center" />
+        <EditText
+            android:id="@+id/SigninUsername"
+            android:hint="Username"
+            style="@style/Input" />
+        <EditText
+            android:id="@+id/SigninPassword"
+            android:hint="Password"
+            style="@style/Input" />
+        <Button
+            android:id="@+id/BtnSignin"
+            android:text="Signin"
+            android:background="@drawable/style_button_gray"
+            style="@style/Button" />
+    </LinearLayout>
+</RelativeLayout>

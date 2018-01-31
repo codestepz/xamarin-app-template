@@ -41,11 +41,85 @@ namespace XamarinTemplate.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f050003
+			public const int Black = 2131034115;
+			
+			// aapt resource value: 0x7f050002
+			public const int Blue = 2131034114;
+			
+			// aapt resource value: 0x7f050004
+			public const int Gray = 2131034116;
+			
+			// aapt resource value: 0x7f050005
+			public const int GrayBold = 2131034117;
+			
+			// aapt resource value: 0x7f050001
+			public const int Green = 2131034113;
+			
+			// aapt resource value: 0x7f050000
+			public const int White = 2131034112;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Drawable
+		{
+			
+			// aapt resource value: 0x7f020000
+			public const int Image_Wallpaper = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Style_Border = 2130837505;
+			
+			// aapt resource value: 0x7f020002
+			public const int Style_Button_Gray = 2130837506;
+			
+			// aapt resource value: 0x7f020003
+			public const int Style_Button_Green = 2130837507;
+			
+			// aapt resource value: 0x7f020004
+			public const int Style_Input = 2130837508;
+			
+			// aapt resource value: 0x7f020005
+			public const int Style_Input_White = 2130837509;
+			
+			static Drawable()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Drawable()
+			{
+			}
+		}
+		
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			// aapt resource value: 0x7f080004
+			public const int BtnSignin = 2131230724;
+			
+			// aapt resource value: 0x7f080001
+			public const int FormLayout = 2131230721;
+			
+			// aapt resource value: 0x7f080003
+			public const int SigninPassword = 2131230723;
+			
+			// aapt resource value: 0x7f080002
+			public const int SigninUsername = 2131230722;
+			
+			// aapt resource value: 0x7f080000
+			public const int TextTitle = 2131230720;
 			
 			static Id()
 			{
@@ -60,8 +134,11 @@ namespace XamarinTemplate.Droid
 		public partial class Layout
 		{
 			
-			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			// aapt resource value: 0x7f040000
+			public const int Main = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int Signin = 2130968577;
 			
 			static Layout()
 			{
@@ -76,8 +153,8 @@ namespace XamarinTemplate.Droid
 		public partial class Mipmap
 		{
 			
-			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			// aapt resource value: 0x7f030000
+			public const int Icon = 2130903040;
 			
 			static Mipmap()
 			{
@@ -92,11 +169,11 @@ namespace XamarinTemplate.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f060001
+			public const int app_name = 2131099649;
 			
-			// aapt resource value: 0x7f040000
-			public const int hello = 2130968576;
+			// aapt resource value: 0x7f060000
+			public const int hello = 2131099648;
 			
 			static String()
 			{
@@ -104,6 +181,37 @@ namespace XamarinTemplate.Droid
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f070004
+			public const int Background = 2131165188;
+			
+			// aapt resource value: 0x7f070005
+			public const int BackgroundWallpaper = 2131165189;
+			
+			// aapt resource value: 0x7f070001
+			public const int Button = 2131165185;
+			
+			// aapt resource value: 0x7f070000
+			public const int Input = 2131165184;
+			
+			// aapt resource value: 0x7f070002
+			public const int Presurve_Theme = 2131165186;
+			
+			// aapt resource value: 0x7f070003
+			public const int Presurve_Theme_ActionBar = 2131165187;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

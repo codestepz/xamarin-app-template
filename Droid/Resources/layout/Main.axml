@@ -1,4 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent">
-	<Button android:id="@+id/myButton" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="@string/hello" />
-</LinearLayout>
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:gravity="center"
+    style="@style/BackgroundWallpaper">
+    <TextView
+        android:id="@+id/TextTitle"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Xamarin Template"
+        android:textColor="@color/White"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:gravity="center" />
+</RelativeLayout>
