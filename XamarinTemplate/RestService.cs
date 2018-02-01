@@ -49,7 +49,7 @@ namespace XamarinTemplate {
                 Console.WriteLine(e.Message);
 
                 // Return Data  
-                return null;
+                return await GETAsync(url);
 
             }
 
@@ -90,7 +90,7 @@ namespace XamarinTemplate {
                 Console.WriteLine(e.Message);
 
                 // Return Data  
-                return null;
+                return await POSTAsync(paramsRoute);
 
             }
 
@@ -131,7 +131,7 @@ namespace XamarinTemplate {
                 Console.WriteLine(e.Message);
 
                 // Return Data  
-                return null;
+                return await PUTAsync(paramsRoute);
 
             }
 
@@ -159,7 +159,7 @@ namespace XamarinTemplate {
                 Console.WriteLine(e.Message);
 
                 // Return Data  
-                return null;
+                return await DELETEAsync(url);
 
             }
 

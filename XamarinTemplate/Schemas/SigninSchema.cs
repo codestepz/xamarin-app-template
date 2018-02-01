@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace XamarinTemplate.Schemas {
     
     public class SigninSchema {

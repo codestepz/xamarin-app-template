@@ -13,7 +13,7 @@ using Android.Widget;
 using XamarinTemplate;
 using XamarinTemplate.Schemas;
 
-namespace XamarinTemplate.Droid.Screen {
+namespace XamarinTemplate.Droid {
     
     [Activity(Label = "SigninScreen")]
     public class SigninScreen : BaseScreen {

@@ -1,4 +1,5 @@
 ﻿using System;
+
 namespace XamarinTemplate.Schemas {
     
     public class ParamsSchema {
@@ -7,7 +8,7 @@ namespace XamarinTemplate.Schemas {
         public string Action { get; set; }
         public string Data { get; set; }
 
-        // กำหนดค่าเริ่มต้น
+        // Defauft
         public ParamsSchema () { }
 
     }
