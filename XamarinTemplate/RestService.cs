@@ -46,7 +46,7 @@ namespace XamarinTemplate {
             } catch (Exception e) {
 
                 // Console
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
 
                 // Return Data  
                 return await GETAsync(url);
@@ -87,7 +87,7 @@ namespace XamarinTemplate {
             } catch (Exception e) {
 
                 // Console
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
 
                 // Return Data  
                 return await POSTAsync(paramsRoute);
@@ -128,7 +128,7 @@ namespace XamarinTemplate {
             } catch (Exception e) {
 
                 // Console
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
 
                 // Return Data  
                 return await PUTAsync(paramsRoute);
@@ -156,7 +156,7 @@ namespace XamarinTemplate {
             } catch (Exception e) {
 
                 // Console
-                Console.WriteLine(e.Message);
+                Console.WriteLine(e.ToString());
 
                 // Return Data  
                 return await DELETEAsync(url);

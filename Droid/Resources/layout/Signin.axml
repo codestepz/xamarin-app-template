@@ -13,13 +13,13 @@
         android:paddingLeft="20dp">
         <TextView
             android:id="@+id/TextTitle"
+            android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:text="Signin"
             android:textSize="20dp"
             android:textStyle="bold"
-            android:textColor="@color/White"
-            android:gravity="center" />
+            android:textColor="@color/White" />
         <EditText
             android:id="@+id/SigninUsername"
             android:hint="Username"

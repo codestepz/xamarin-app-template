@@ -15,7 +15,7 @@ using XamarinTemplate.Schemas;
 
 namespace XamarinTemplate.Droid {
     
-    [Activity(Label = "XamarinTemplate", MainLauncher = true, Icon = "@mipmap/icon")]
+    [Activity(Theme = "@style/Custom.Theme.ActionBar", Label = "XamarinTemplate", MainLauncher = true, Icon = "@mipmap/icon")]
     public class MainScreen : BaseScreen  {
 
         protected override void OnCreate (Bundle savedInstanceState) {

@@ -4,7 +4,6 @@
     <!--
     <dimen name="logo_width">175dp</dimen>
     <dimen name="logo_height">175dp</dimen>
-    
     <item type="dimen" name="logo_width">100%</item>
     <item type="dimen" name="logo_height">100%</item>
     -->

@@ -17,14 +17,16 @@ using XamarinTemplate.Schemas;
 
 namespace XamarinTemplate.Droid {
     
-    [Activity(Label = "BaseScreen")]
+    [Activity(Theme = "@style/Custom.Theme.ActionBar", Label = "XamarinTemplate", Icon = "@mipmap/icon")]
     public class BaseScreen : Activity {
 
         protected RestService api = new RestService();
 
         protected ISharedPreferences session;
-        protected String UserPreferences = "auth";
         protected bool AuthenticatedStatus = false;
+
+        protected String UserPreferences = "auth";
+        protected String SESSION_EMAIL, SESSION_PASSWORD;
 
         protected override void OnCreate (Bundle savedInstanceState) {
             
@@ -34,9 +36,9 @@ namespace XamarinTemplate.Droid {
             SetContentView(Resource.Layout.Main);
 
             // Hidden Navigation
-            int uiOptions = (int)Window.DecorView.SystemUiVisibility;
-            uiOptions |= (int)SystemUiFlags.HideNavigation;
-            Window.DecorView.SystemUiVisibility = (StatusBarVisibility)uiOptions;
+            int uiOptions = (int) Window.DecorView.SystemUiVisibility;
+            uiOptions |= (int) SystemUiFlags.HideNavigation;
+            Window.DecorView.SystemUiVisibility = (StatusBarVisibility) uiOptions;
 
             // Session
             session = GetSharedPreferences(UserPreferences, FileCreationMode.Private);
@@ -72,15 +74,14 @@ namespace XamarinTemplate.Droid {
 
                 // Get Data Storage
                 ISharedPreferences preference = GetSharedPreferences(UserPreferences, FileCreationMode.Private);
-                String storage = preference.GetString("storage", "");
 
                 // return
-                return (!string.IsNullOrWhiteSpace(storage)) ? true : false;
+                return (!string.IsNullOrWhiteSpace(preference.GetString("storage", null))) ? true : false;
 
             } catch (Exception ex) {
 
                 // Console
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ToString());
 
                 // Return
                 return false;
@@ -101,12 +102,12 @@ namespace XamarinTemplate.Droid {
                 ISharedPreferences preference = GetSharedPreferences(UserPreferences, FileCreationMode.Private);
 
                 // Return Response
-                return api.toObject(preference.GetString("storage", ""));
+                return (!string.IsNullOrWhiteSpace(preference.GetString("storage", null))) ? api.toObject(preference.GetString("storage", null)) : null;
 
             } catch (Exception ex) {
 
                 // Console
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ToString());
 
                 // Return Data
                 return null;
@@ -129,7 +130,7 @@ namespace XamarinTemplate.Droid {
             } catch (Exception ex) {
 
                 // Console
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ToString());
 
             }
 
@@ -149,7 +150,7 @@ namespace XamarinTemplate.Droid {
             } catch (Exception ex) {
 
                 // Console
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ToString());
 
             }
 
@@ -160,6 +161,7 @@ namespace XamarinTemplate.Droid {
         // ======================================================================
 
         protected void OpenAlert (string titleAlert, string textAlert) {
+            Console.WriteLine(titleAlert);
             Toast.MakeText(ApplicationContext, textAlert, ToastLength.Long).Show();
         }
 
@@ -188,7 +190,7 @@ namespace XamarinTemplate.Droid {
             } catch (Exception ex) {
 
                 // Console
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ToString());
 
             }
 

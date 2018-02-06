@@ -15,59 +15,71 @@ namespace XamarinTemplate.iOS {
             
             base.ViewDidLoad();
 
-            // Background
-            View.AddSubview(this.ViewWallpaper());
+            try {
 
-            // Content
-            this.CreateContent();
+                // Background
+                View.AddSubview(this.ViewWallpaper());
 
-            // Username & Password
-            string username = SigninUsername.Text.Trim();
-            string password = SigninPassword.Text.Trim();
+                // Content
+                this.CreateContent();
 
-            // ปุ่มเข้าสู่ระบบ
-            SigninButton.TouchUpInside += async delegate {
+                // Username & Password
+                string username = SigninUsername.Text.Trim();
+                string password = SigninPassword.Text.Trim();
 
-                // portrait bounds
-                var bounds = UIScreen.MainScreen.Bounds; 
+                // ปุ่มเข้าสู่ระบบ
+                SigninButton.TouchUpInside += async delegate {
 
-                // แสดง Loading
-                LoadingOverlay loadPop = new LoadingOverlay(bounds);
-                View.Add(loadPop);
+                    // portrait bounds
+                    var bounds = UIScreen.MainScreen.Bounds;
 
-                // พบข้อมูล
-                if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password)) {
-
-                    // Create a new Signin  
-                    var dateParams = new ParamsSchema {
-                        Controller = "login",
-                        Action = "verify",
-                        Data = api.toString(new SigninSchema {
-                            username = username,
-                            password = password,
-                        })
-                    };
-
-                    // handling the answer
-                    string result = await api.POSTAsync(dateParams);
+                    // แสดง Loading
+                    LoadingOverlay loadPop = new LoadingOverlay(bounds);
+                    View.Add(loadPop);
 
                     // พบข้อมูล
-                    if (!String.IsNullOrEmpty(result))  {
+                    if (!String.IsNullOrEmpty(username) && !String.IsNullOrEmpty(password)) {
 
-                        // Console
-                        Console.WriteLine(result);
+                        // Create a new Signin  
+                        var dateParams = new ParamsSchema {
+                            Controller = "login",
+                            Action = "verify",
+                            Data = api.toString(new SigninSchema {
+                                username = username,
+                                password = password
+                            })
+                        };
 
-                        // Create an instance of our AppDelegate
-                        var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+                        // handling the answer
+                        string result = await api.POSTAsync(dateParams);
 
-                        appDelegate.AuthenticatedStatus = true;
-                        appDelegate.Storage = result;
+                        // พบข้อมูล
+                        if (!String.IsNullOrEmpty(result)) {
 
-                        // ซ่อน Loading
-                        loadPop.Hide();
+                            // Console
+                            Console.WriteLine(result);
 
-                        // แสดง Alert
-                        this.OpenAlert("แจ้งเตือน", "เข้าสู่ระบบสำเร็จแล้ว !");
+                            // Create an instance of our AppDelegate
+                            var appDelegate = UIApplication.SharedApplication.Delegate as AppDelegate;
+
+                            appDelegate.AuthenticatedStatus = true;
+                            appDelegate.Storage = result;
+
+                            // ซ่อน Loading
+                            loadPop.Hide();
+
+                            // แสดง Alert
+                            OpenAlert("แจ้งเตือน", "เข้าสู่ระบบสำเร็จแล้ว !");
+
+                        } else {
+
+                            // ซ่อน Loading
+                            loadPop.Hide();
+
+                            // แสดง Alert
+                            OpenAlert("แจ้งเตือน", "ไม่พบข้อมูล กรุณาตรวจสอบข้อมูลอีกครั้ง !");
+
+                        }
 
                     } else {
 
@@ -75,21 +87,21 @@ namespace XamarinTemplate.iOS {
                         loadPop.Hide();
 
                         // แสดง Alert
-                        this.OpenAlert("แจ้งเตือน", "ไม่พบข้อมูล กรุณาตรวจสอบข้อมูลอีกครั้ง !");
+                        OpenAlert("แจ้งเตือน", "ข้อมูลไม่ครบถ้วน กรุณาตรวจสอบข้อมูลอีกครั้ง !");
 
                     }
 
-                } else {
+                };
 
-                    // ซ่อน Loading
-                    loadPop.Hide();
+            } catch (Exception ex) {
 
-                    // แสดง Alert
-                    this.OpenAlert("แจ้งเตือน", "ข้อมูลไม่ครบถ้วน กรุณาตรวจสอบข้อมูลอีกครั้ง !");
+                // Console
+                Console.WriteLine(ex.ToString());
 
-                }
+                // แสดง Alert
+                OpenAlert("แจ้งเตือน", "ระบบไม่สามารถเชื่อมต่อ Service ได้");
 
-            };
+            }
 
         }
 
@@ -99,35 +111,44 @@ namespace XamarinTemplate.iOS {
 
         private void CreateContent () {
 
-            // Margin Top
-            float marginTop = (((float)View.Frame.Height - 240) / 2);
+            try {
 
-            // Layout
-            SigninContentLayout.Frame = this.SetFrameFullScreen(View, 0, 0, 0, 0);
+                // Margin Top
+                float marginTop = (((float)View.Frame.Height - 240) / 2);
 
-            // Title
-            SigninTitle.Frame = this.SetFrameCenterHorizontal(SigninContentLayout, marginTop, 300, 40);
-            SigninContentLayout.AddSubview(SigninTitle);
+                // Layout
+                SigninContentLayout.Frame = this.SetFrameFullScreen(View, 0, 0, 0, 0);
 
-            marginTop += (40 + 30); // 40 Height, 30 MarginBottom
+                // Title
+                SigninTitle.Frame = this.SetFrameCenterHorizontal(SigninContentLayout, marginTop, 300, 40);
+                SigninContentLayout.AddSubview(SigninTitle);
 
-            // Username
-            SigninUsername.Frame = this.SetFrameCenterHorizontal(SigninContentLayout, marginTop, 300, 40);
-            SigninContentLayout.AddSubview(SigninUsername);
+                marginTop += (40 + 30); // 40 Height, 30 MarginBottom
 
-            marginTop += (40 + 10); // 40 Height, 10 MarginBottom
+                // Username
+                SigninUsername.Frame = this.SetFrameCenterHorizontal(SigninContentLayout, marginTop, 300, 40);
+                SigninContentLayout.AddSubview(SigninUsername);
 
-            // Password
-            SigninPassword.Frame = this.SetFrameCenterHorizontal(SigninContentLayout, marginTop, 300, 40);
-            SigninContentLayout.AddSubview(SigninPassword);
+                marginTop += (40 + 10); // 40 Height, 10 MarginBottom
 
-            marginTop += (40 + 20); // 40 Height, 20 MarginBottom
+                // Password
+                SigninPassword.Frame = this.SetFrameCenterHorizontal(SigninContentLayout, marginTop, 300, 40);
+                SigninContentLayout.AddSubview(SigninPassword);
 
-            // Button
-            SigninButton.Frame = this.SetFrameCenterHorizontal(SigninContentLayout, marginTop, 300, 40);
-            SigninContentLayout.AddSubview(SigninButton);
+                marginTop += (40 + 20); // 40 Height, 20 MarginBottom
 
-            marginTop += (40 + 20); // 40 Height, 20 MarginBottom
+                // Button
+                SigninButton.Frame = this.SetFrameCenterHorizontal(SigninContentLayout, marginTop, 300, 40);
+                SigninContentLayout.AddSubview(SigninButton);
+
+                marginTop += (40 + 20); // 40 Height, 20 MarginBottom
+
+            } catch (Exception ex) {
+
+                // Console
+                Console.WriteLine(ex.ToString());
+
+            }
 
         }
 

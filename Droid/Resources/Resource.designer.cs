@@ -44,8 +44,8 @@ namespace XamarinTemplate.Droid
 		public partial class Color
 		{
 			
-			// aapt resource value: 0x7f050003
-			public const int Black = 2131034115;
+			// aapt resource value: 0x7f050001
+			public const int Black = 2131034113;
 			
 			// aapt resource value: 0x7f050002
 			public const int Blue = 2131034114;
@@ -56,8 +56,8 @@ namespace XamarinTemplate.Droid
 			// aapt resource value: 0x7f050005
 			public const int GrayBold = 2131034117;
 			
-			// aapt resource value: 0x7f050001
-			public const int Green = 2131034113;
+			// aapt resource value: 0x7f050003
+			public const int Green = 2131034115;
 			
 			// aapt resource value: 0x7f050000
 			public const int White = 2131034112;
@@ -197,14 +197,14 @@ namespace XamarinTemplate.Droid
 			// aapt resource value: 0x7f070001
 			public const int Button = 2131165185;
 			
-			// aapt resource value: 0x7f070000
-			public const int Input = 2131165184;
-			
 			// aapt resource value: 0x7f070002
-			public const int Presurve_Theme = 2131165186;
+			public const int Custom_Theme = 2131165186;
 			
 			// aapt resource value: 0x7f070003
-			public const int Presurve_Theme_ActionBar = 2131165187;
+			public const int Custom_Theme_ActionBar = 2131165187;
+			
+			// aapt resource value: 0x7f070000
+			public const int Input = 2131165184;
 			
 			static Style()
 			{

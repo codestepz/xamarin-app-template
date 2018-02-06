@@ -75,7 +75,7 @@ namespace XamarinTemplate.iOS {
             } catch (Exception ex) {
 
                 // Console
-                Console.WriteLine(ex);
+                Console.WriteLine(ex.ToString());
 
                 // Return Data
                 return false;
@@ -101,7 +101,7 @@ namespace XamarinTemplate.iOS {
             } catch (Exception ex) {
 
                 // Console
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ToString());
 
                 // Return Data
                 return null;
@@ -123,7 +123,7 @@ namespace XamarinTemplate.iOS {
             } catch (Exception ex) {
 
                 // Console
-                Console.WriteLine(ex.Message);
+                Console.WriteLine(ex.ToString());
 
             }
 

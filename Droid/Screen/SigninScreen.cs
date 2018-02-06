@@ -15,7 +15,7 @@ using XamarinTemplate.Schemas;
 
 namespace XamarinTemplate.Droid {
     
-    [Activity(Label = "SigninScreen")]
+    [Activity(Theme = "@style/Custom.Theme.ActionBar", Label = "SigninScreen")]
     public class SigninScreen : BaseScreen {
 
         protected ProgressDialog progress;
@@ -23,55 +23,70 @@ namespace XamarinTemplate.Droid {
         protected override void OnCreate(Bundle savedInstanceState) {
             
             base.OnCreate(savedInstanceState);
-            SetContentView(Resource.Layout.Signin);
 
-            // Username & Password
-            TextView username = FindViewById<TextView>(Resource.Id.SigninUsername);
-            TextView password = FindViewById<TextView>(Resource.Id.SigninPassword);
+            try {
 
-            // autofucus = false
-            username.Focusable = false;
-            password.Focusable = false;
+                // Set Layout
+                SetContentView(Resource.Layout.Signin);
 
-            // ปุ่มเข้าสู่ระบบ
-            Button BtnSignin = FindViewById<Button>(Resource.Id.BtnSignin);
-            BtnSignin.Click += async (sender, e) => {
+                // Username & Password
+                TextView username = FindViewById<TextView>(Resource.Id.SigninUsername);
+                TextView password = FindViewById<TextView>(Resource.Id.SigninPassword);
+
+                // autofucus = false
+                username.Focusable = false;
+                password.Focusable = false;
 
                 // แสดง Loading
                 progress = new ProgressDialog(this);
                 progress.Indeterminate = true;
                 progress.SetProgressStyle(ProgressDialogStyle.Spinner);
                 progress.SetMessage("Loading... Please wait...");
-                progress.Show();
 
-                // พบข้อมูล
-                if (!string.IsNullOrWhiteSpace(username.Text) && !string.IsNullOrWhiteSpace(password.Text)) {
+                // ปุ่มเข้าสู่ระบบ
+                Button BtnSignin = FindViewById<Button>(Resource.Id.BtnSignin);
+                BtnSignin.Click += async (sender, e) => {
 
-                    // Create a new Signin  
-                    var dateParams = new ParamsSchema {
-                        Controller = "login",
-                        Action = "verify",
-                        Data = api.toString(new SigninSchema {
-                            username = username.Text,
-                            password = password.Text,
-                        })
-                    };
-
-                    // handling the answer
-                    var result = await api.POSTAsync(dateParams);
+                    // Show
+                    progress.Show();
 
                     // พบข้อมูล
-                    if (!string.IsNullOrWhiteSpace(result)) {
+                    if (!string.IsNullOrWhiteSpace(username.Text) && !string.IsNullOrWhiteSpace(password.Text)) {
 
-                        // Console
-                        Console.WriteLine(result);
+                        // Create a new Signin  
+                        var dateParams = new ParamsSchema {
+                            Controller = "login",
+                            Action = "verify",
+                            Data = api.toString(new SigninSchema {
+                                username = username.Text,
+                                password = password.Text
+                            })
+                        };
 
-                        // Hide
-                        progress.Dismiss();
+                        // handling the answer
+                        var result = await api.POSTAsync(dateParams);
 
+                        // พบข้อมูล
+                        if (!string.IsNullOrWhiteSpace(result)) {
 
-                        // Alert
-                        this.OpenAlert("แจ้งเตือน", "เข้าสู่ระบบสำเร็จแล้ว !");
+                            // Console
+                            Console.WriteLine(result);
+
+                            // Hide
+                            progress.Dismiss();
+
+                            // Alert
+                            OpenAlert("แจ้งเตือน", "เข้าสู่ระบบสำเร็จแล้ว !");
+
+                        } else {
+
+                            // Hide
+                            progress.Dismiss();
+
+                            // Alert
+                            OpenAlert("แจ้งเตือน", "ไม่พบข้อมูล กรุณาตรวจสอบข้อมูลอีกครั้ง !");
+
+                        }
 
                     } else {
 
@@ -79,21 +94,21 @@ namespace XamarinTemplate.Droid {
                         progress.Dismiss();
 
                         // Alert
-                        this.OpenAlert("แจ้งเตือน", "ไม่พบข้อมูล กรุณาตรวจสอบข้อมูลอีกครั้ง !");
+                        OpenAlert("แจ้งเตือน", "ข้อมูลไม่ครบถ้วน กรุณาตรวจสอบข้อมูลอีกครั้ง !");
 
                     }
 
-                } else {
+                };
 
-                    // Hide
-                    progress.Dismiss();
+            } catch (Exception ex) {
 
-                    // Alert
-                    this.OpenAlert("แจ้งเตือน", "ข้อมูลไม่ครบถ้วน กรุณาตรวจสอบข้อมูลอีกครั้ง !");
+                // Console
+                Console.WriteLine(ex.ToString());
 
-                }
+                // Alert
+                OpenAlert("แจ้งเตือน", "ระบบไม่สามารถเชื่อมต่อ Service ได้");
 
-            };
+            }
 
         }
 

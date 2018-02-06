@@ -17,13 +17,13 @@
     </style>
     -->
     
-    <style name="Presurve.Theme" parent="android:style/Theme.DeviceDefault.NoActionBar">
+    <style name="Custom.Theme" parent="android:style/Theme.DeviceDefault.NoActionBar">
         <item name="android:windowContentOverlay">@null</item>
         <item name="android:colorPrimary">@android:color/transparent</item>
         <item name="android:textColorPrimary">@android:color/white</item>
     </style>
     
-    <style name="Presurve.Theme.ActionBar" parent="Presurve.Theme">
+    <style name="Custom.Theme.ActionBar" parent="Custom.Theme">
         <item name="android:windowActionBar">false</item>
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBarOverlay">true</item>
@@ -31,7 +31,7 @@
         <item name="android:windowTranslucentNavigation">true</item>
     </style>
 
-    <!-- Background -->
+    <!-- Background for RelativeLayout -->
 
     <style name="Background">
         <item name="android:orientation">vertical</item>
