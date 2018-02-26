@@ -36,12 +36,36 @@ namespace XamarinTemplate.Droid {
             SetContentView(Resource.Layout.Main);
 
             // Hidden Navigation
-            int uiOptions = (int) Window.DecorView.SystemUiVisibility;
-            uiOptions |= (int) SystemUiFlags.HideNavigation;
-            Window.DecorView.SystemUiVisibility = (StatusBarVisibility) uiOptions;
+            this.HideAutoNavigationbarBottom();
 
             // Session
             session = GetSharedPreferences(UserPreferences, FileCreationMode.Private);
+
+        }
+
+        public override void OnWindowFocusChanged (bool hasFocus) {
+
+            base.OnWindowFocusChanged(hasFocus);
+            if (hasFocus) { this.HideAutoNavigationbarBottom(); }
+
+        }
+
+        private void HideAutoNavigationbarBottom () {
+
+            View decorView = Window.DecorView;
+
+            var uiOptions = (int)decorView.SystemUiVisibility;
+            var newUiOptions = (int)uiOptions;
+
+            newUiOptions |= (int)SystemUiFlags.LayoutStable;
+            newUiOptions |= (int)SystemUiFlags.LayoutHideNavigation;
+            // newUiOptions |= (int) SystemUiFlags.LayoutFullscreen;
+            newUiOptions |= (int)SystemUiFlags.HideNavigation;
+            // newUiOptions |= (int) SystemUiFlags.Fullscreen;
+            newUiOptions |= (int)SystemUiFlags.Immersive;
+            newUiOptions |= (int)SystemUiFlags.ImmersiveSticky;
+
+            decorView.SystemUiVisibility = (StatusBarVisibility)newUiOptions;
 
         }
 
