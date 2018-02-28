@@ -54,16 +54,49 @@ namespace XamarinTemplate.Droid {
 
             View decorView = Window.DecorView;
 
+            var uiOptions = (int) decorView.SystemUiVisibility;
+            var newUiOptions = (int) uiOptions;
+
+            newUiOptions |= (int) SystemUiFlags.LayoutStable;
+            newUiOptions |= (int) SystemUiFlags.LayoutHideNavigation;
+            // newUiOptions |= (int) SystemUiFlags.LayoutFullscreen;
+            newUiOptions |= (int) SystemUiFlags.HideNavigation;
+            // newUiOptions |= (int) SystemUiFlags.Fullscreen;
+            newUiOptions |= (int) SystemUiFlags.Immersive;
+            newUiOptions |= (int) SystemUiFlags.ImmersiveSticky;
+
+            decorView.SystemUiVisibility = (StatusBarVisibility) newUiOptions;
+
+        }
+
+        private void HideSystemUI () {
+
+            View decorView = Window.DecorView;
+
+            var uiOptions = (int) decorView.SystemUiVisibility;
+            var newUiOptions = (int) uiOptions;
+
+            newUiOptions |= (int) SystemUiFlags.LayoutStable;
+            newUiOptions |= (int) SystemUiFlags.LayoutHideNavigation;
+            newUiOptions |= (int) SystemUiFlags.LayoutFullscreen;
+            newUiOptions |= (int) SystemUiFlags.HideNavigation;
+            newUiOptions |= (int) SystemUiFlags.Fullscreen;
+            newUiOptions |= (int) SystemUiFlags.Immersive;
+
+            decorView.SystemUiVisibility = (StatusBarVisibility)newUiOptions;
+
+        }
+
+        private void ShowSystemUI () {
+
+            View decorView = Window.DecorView;
+
             var uiOptions = (int)decorView.SystemUiVisibility;
             var newUiOptions = (int)uiOptions;
 
             newUiOptions |= (int)SystemUiFlags.LayoutStable;
             newUiOptions |= (int)SystemUiFlags.LayoutHideNavigation;
-            // newUiOptions |= (int) SystemUiFlags.LayoutFullscreen;
-            newUiOptions |= (int)SystemUiFlags.HideNavigation;
-            // newUiOptions |= (int) SystemUiFlags.Fullscreen;
-            newUiOptions |= (int)SystemUiFlags.Immersive;
-            newUiOptions |= (int)SystemUiFlags.ImmersiveSticky;
+            newUiOptions |= (int)SystemUiFlags.LayoutFullscreen;
 
             decorView.SystemUiVisibility = (StatusBarVisibility)newUiOptions;
 
